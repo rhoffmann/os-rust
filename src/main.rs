@@ -11,7 +11,16 @@ fn panic(_info: &PanicInfo) -> ! {
 
 #[no_mangle] // keep name of the function as is
 pub extern "C" fn _start() -> ! {
-    vga_buffer::print_something();
+    use core::fmt::Write;
+
+    vga_buffer::WRITER.lock().write_str("Hello again").unwrap();
+    write!(
+        vga_buffer::WRITER.lock(),
+        ", some thing: {} {}",
+        45,
+        1.43532
+    )
+    .unwrap();
 
     loop {}
 }
