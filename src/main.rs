@@ -1,6 +1,6 @@
 #![no_std] // dont link rust std lib
 #![no_main] // disable rust-level entry point
-#![feature(custom_test_frameworks)]
+#![feature(custom_test_frameworks)] // adapt test framework bc default depends on std lib which is not linked
 #![test_runner(crate::test_runner)]
 #![reexport_test_harness_main = "test_main"]
 
